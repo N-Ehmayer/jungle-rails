@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Below is a receipt for your order,
+    </p>
+    <h4>Order# <%= @order.id %></h4>
+    <% @cart_total = 0 %>
+    <% @order.line_items.each do |item| %>
+      <% if product = Product.find_by(id: item.product_id) %>
+      <% item_total = product.price * item.quantity %>
+      <% @cart_total += item_total %>
+        <p><%= product.name %><br>
+          Quantity: <%= product.quantity %><br>
+          $<%= product.price %>
+        </p>
+      <% end %>
+    <% end %>
+    <p>TOTAL: <%= @cart_total %></p>
+  </body>
+</html>
