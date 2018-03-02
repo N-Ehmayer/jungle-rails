@@ -3,3 +3,4 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.receipt_email(Order.find(10))
   end
 end
+
