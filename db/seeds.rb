@@ -29,6 +29,22 @@ cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
+##Users
+
+User.destroy_all
+
+user1 = User.create!({
+  email: 'john-smith@example.com',
+  password_digest: 'password',
+  name: 'John Smith'
+})
+
+user2 = User.create!({
+  email: 'sally-wills@example.com',
+  password_digest: 'password',
+  name: 'Sally Wills'
+})
+
 ## PRODUCTS
 
 puts "Re-creating Products ..."
