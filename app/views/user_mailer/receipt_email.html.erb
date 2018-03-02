@@ -14,7 +14,7 @@
       <% item_total = product.price * item.quantity %>
       <% @cart_total += item_total %>
         <p><%= product.name %><br>
-          Quantity: <%= product.quantity %><br>
+          Quantity: <%= item.quantity %><br>
           $<%= product.price %>
         </p>
       <% end %>
