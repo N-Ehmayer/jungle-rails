@@ -51,6 +51,12 @@
       </div>
     </div>
 
+    </div>
+  <% else %>
+    <div class="empty-cart-message">
+      <h4>Your cart is empty!</h4>
+      <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   <% end %>
 
 </section>
