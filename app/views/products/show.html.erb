@@ -26,6 +26,15 @@
       </div>
     </div>
 
+    <div>
+      <h3>Customers reviews:</h3>
+        <% @product.ratings.each do |rating| %>
+          <% user = User.find(rating.user_id) %>
+          <p>- <b><%= user.name %> -  <%= rating.rating %>/5 </i></b></p>
+          <p><%= rating.description %></p><br>
+        <% end %>
+    </div>
+
   </article>
 
 </section>
