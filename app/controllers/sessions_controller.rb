@@ -18,12 +18,4 @@ class SessionsController < ApplicationController
     redirect_to '/login'
   end
 
-
-
-  def require_user
-    unless current_user?
-      redirect_to login_path
-    end
-  end
-
 end
