@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
     cookies[:cart]
   end
 
+  def require_user
+    unless current_user
+      redirect_to login_path
+    end
+  end
+
 end

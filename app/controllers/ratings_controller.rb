@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
 
+  before_filter :require_user
+
   def create
     @rating = Rating.new(rating_params)
 
