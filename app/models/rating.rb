@@ -4,8 +4,9 @@ class Rating < ActiveRecord::Base
   belongs_to :user
 
   validates :product, presence: true
-  # validates :user, presence: true
+  validates :user, presence: true
   validates :rating, presence: true
+  validates :description, presence: true
 
 
 end

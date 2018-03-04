@@ -28,22 +28,31 @@
     <br>
 
     <div>
-      <h3>Customer reviews</h3><br>
-        <% @product.ratings.each do |rating| %>
+      <h2>Customer reviews</h2><br>
+        <% @product.ratings.reverse.each do |rating| %>
           <% user = User.find(rating.user_id) %>
-          <dl>
-            <p>- <b><%= user.name %> -  <%= rating.rating %>/5 </i></b></p>
-            <dd><%= rating.description %></dd><br>
+          <dl class="user-reviews">
+            <p><b>- <%= user.name %> -</b></p>
+            <dd><%= rating.description %> - <b><%= rating.rating %>/5 </i></b></dd><br>
           </dl>
         <% end %>
     </div>
     <div>
-      <h4>Leave a review</h4>
-      <%= form_for :rating, url: product_ratings_path(@product) do |form| %>
+      <h4>Rate this product?</h4>
+      <%= form_for @rating, url: product_ratings_path(@product) do |form| %>
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <div class="form-group">
-          <%= form.label :rating %>
-          <%= form.select :rating, ['1', '2', '3', '4', '5'], class: 'form-control' %>
+          <%= form.select :rating, [nil, '1', '2', '3', '4', '5'], class: 'form-control' %> out of 5
         </div>
         <div class="form-group">
           <%= form.label :Review %>
