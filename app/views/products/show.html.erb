@@ -29,6 +29,7 @@
 
     <div>
       <h2>Customer reviews</h2><br>
+      <% if @product.ratings.length > 0 %>
         <% @product.ratings.reverse.each do |rating| %>
           <% user = User.find(rating.user_id) %>
           <dl class="user-reviews">
@@ -36,33 +37,38 @@
             <dd><%= rating.description %> - <b><%= rating.rating %>/5 </i></b></dd><br>
           </dl>
         <% end %>
+      <% else %>
+        <p>This product doesn't have any reviews</p>
+      <% end %>
     </div>
     <div>
-      <h4>Rate this product?</h4>
-      <%= form_for @rating, url: product_ratings_path(@product) do |form| %>
-        <% if form.object.errors.any? %>
-          <div class="alert alert-danger">
-            <strong>The following errors prevented saving:</strong>
-            <ul>
-              <% form.object.errors.full_messages.each do |error| %>
-                <li><%= error %></li>
-              <% end %>
-            </ul>
+      <% if @user_id %>
+        <h4>Rate this product</h4>
+        <%= form_for @rating, url: product_ratings_path(@product) do |form| %>
+          <% if form.object.errors.any? %>
+            <div class="alert alert-danger">
+              <strong>The following errors prevented saving:</strong>
+              <ul>
+                <% form.object.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= form.select :rating, [nil, '1', '2', '3', '4', '5'], class: 'form-control' %> out of 5
           </div>
+          <div class="form-group">
+            <%= form.label :Review %>
+            <%= form.text_field :description, class: 'form-control' %>
+            <%= form.hidden_field :product_id, value: @product.id %>
+            <%= form.hidden_field :user_id, value: @user_id %>
+          </div>
+
+
+        <%= form.submit 'Submit review', class: 'btn btn-primary' %>
         <% end %>
-
-        <div class="form-group">
-          <%= form.select :rating, [nil, '1', '2', '3', '4', '5'], class: 'form-control' %> out of 5
-        </div>
-        <div class="form-group">
-          <%= form.label :Review %>
-          <%= form.text_field :description, class: 'form-control' %>
-          <%= form.hidden_field :product_id, value: @product.id %>
-          <%= form.hidden_field :user_id, value: @user_id %>
-        </div>
-
-
-      <%= form.submit 'Submit review', class: 'btn btn-primary' %>
       <% end %>
     </div>
 
