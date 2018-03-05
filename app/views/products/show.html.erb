@@ -34,7 +34,11 @@
           <% user = User.find(rating.user_id) %>
           <dl class="user-reviews">
             <p><b>- <%= user.name %> -</b></p>
-            <dd><%= rating.description %> - <b><%= rating.rating %>/5 </i></b></dd><br>
+            <dd><%= rating.description %> - <b><%= rating.rating %>/5 </i></b></dd>
+            <% if user == current_user %>
+              <%= link_to 'Delete', product_rating_path(@product, rating.id), method: :delete, class: 'btn btn-xs btn-danger' %>
+            <% end %>
+            <br>
           </dl>
         <% end %>
       <% else %>

@@ -14,6 +14,12 @@ class RatingsController < ApplicationController
     puts rating_params
   end
 
+  def destroy
+    @rating = Rating.find(params[:id])
+    @rating.destroy
+    redirect_to :back
+  end
+
 
 
   def rating_params

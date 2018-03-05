@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'products#index'
   resources :users
   resources :products, only: [:index, :show] do
-    resources :ratings, only: [:create]
+    resources :ratings, only: [:create, :destroy]
   end
 
   resources :categories, only: [:show]
