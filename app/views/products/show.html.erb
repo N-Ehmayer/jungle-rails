@@ -28,13 +28,14 @@
     <br>
 
     <div>
-      <h2>Customer reviews</h2><br>
+      <h2 class="reviews-header">Customer reviews</h2>
+      <h3>Overall rating: <i><%= @overall_rating %>/5</i></h3><br>
       <% if @product.ratings.length > 0 %>
         <% @product.ratings.reverse.each do |rating| %>
           <% user = User.find(rating.user_id) %>
           <dl class="user-reviews">
             <p><b>- <%= user.name %> -</b></p>
-            <dd><%= rating.description %> - <b><%= rating.rating %>/5 </i></b></dd>
+            <dd><%= rating.description %> - <i><b><%= rating.rating %>/5 </i></b></dd>
             <% if user == current_user %>
               <%= link_to 'Delete', product_rating_path(@product, rating.id), method: :delete, class: 'btn btn-xs btn-danger' %>
             <% end %>
