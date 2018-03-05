@@ -19,7 +19,9 @@ class ProductsController < ApplicationController
     @product.ratings.each do |r|
       total += r.rating.to_i
     end
-    return total / amount
+    if amount > 0
+      return total / amount
+    end
   end
 
 end
