@@ -4,9 +4,9 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Screenshots
 
-![Main products page](https://raw.githubusercontent.com/N-Ehmayer/jungle-rails/0cf42e6e779a8b98dcf2b397d09be4f074c934d2/docs/main_products_page.png)
-![Product description](https://raw.githubusercontent.com/N-Ehmayer/jungle-rails/0cf42e6e779a8b98dcf2b397d09be4f074c934d2/docs/customer_reviews.png)
-![User reviews](https://raw.githubusercontent.com/N-Ehmayer/jungle-rails/0cf42e6e779a8b98dcf2b397d09be4f074c934d2/docs/main_products_page.png)
+![Main products page](docs/https://raw.githubusercontent.com/N-Ehmayer/jungle-rails/0cf42e6e779a8b98dcf2b397d09be4f074c934d2/docs/main_products_page.png)
+![Product description](docs/https://raw.githubusercontent.com/N-Ehmayer/jungle-rails/0cf42e6e779a8b98dcf2b397d09be4f074c934d2/docs/customer_reviews.png)
+![User reviews](docs/https://raw.githubusercontent.com/N-Ehmayer/jungle-rails/0cf42e6e779a8b98dcf2b397d09be4f074c934d2/docs/main_products_page.png)
 
 ## Setup
 
