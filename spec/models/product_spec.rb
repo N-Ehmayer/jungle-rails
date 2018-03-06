@@ -10,7 +10,7 @@ RSpec.describe Product, type: :model do
     end
 
     it 'should save if all fields are provided' do
-      product = Product.new({name: "Bob", quantity: 5, category: @category, price: 100.00})
+      product = Product.new({name: "item1", quantity: 5, category: @category, price: 100.00})
       expect { product.save }.to change { Product.count }
     end
 
@@ -21,19 +21,19 @@ RSpec.describe Product, type: :model do
     end
 
     it 'should have a quantity' do
-      product = Product.new({name: "Bob", quantity: nil, category: @category, price: 100.00})
+      product = Product.new({name: "item1", quantity: nil, category: @category, price: 100.00})
       product.save
       expect(product.errors.full_messages[0]).to eql("Quantity can't be blank")
     end
 
     it 'should have a price' do
-      product = Product.new({name: "Bob", quantity: 5, category: @category, price: nil})
+      product = Product.new({name: "item1", quantity: 5, category: @category, price: nil})
       product.save
       expect(product.errors.full_messages[0]).to eql("Price cents is not a number")
     end
 
     it 'should belong to a category' do
-      product = Product.new({name: "Bob", quantity: 5, category: nil, price: 100.00})
+      product = Product.new({name: "item1", quantity: 5, category: nil, price: 100.00})
       product.save
       expect(product.errors.full_messages[0]).to eql("Category can't be blank")
     end

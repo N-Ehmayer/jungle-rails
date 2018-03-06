@@ -4,6 +4,19 @@ class User < ActiveRecord::Base
 
   has_many :ratings
 
+  validates :name, presence: true
+  validates :password, presence: true,
+                       length: { minimum: 5 }
+  validates :email, presence: true
   validates :email, uniqueness: true
+
+  def self.authenticate_with_credentials(email, password)
+    user = User.find_by_email(email)
+    if user && user.authenticate(password)
+      user
+    else
+      return nil
+    end
+  end
 
 end
