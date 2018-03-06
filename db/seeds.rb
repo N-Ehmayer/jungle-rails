@@ -30,16 +30,19 @@ cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
 ##Users
+puts "Finding or creating Users"
 
-user1 = User.find_or_create_by!({
+User.destroy_all
+
+user1 = User.create!({
   email: 'john-smith@example.com',
-  password_digest: 'password',
+  password: 'password',
   name: 'John Smith'
 })
 
-user2 = User.find_or_create_by!({
+user2 = User.create!({
   email: 'sally-wills@example.com',
-  password_digest: 'password',
+  password: 'password',
   name: 'Sally Wills'
 })
 
