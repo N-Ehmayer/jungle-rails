@@ -41,19 +41,29 @@ RSpec.describe User, type: :model do
       @user.save
     end
 
-    it 'should return user instance if credentials are authenticated' do
-      expect(@user = User.authenticate_with_credentials("example@email.com",
+    it 'should return user if credentials are authenticated' do
+      expect(user = User.authenticate_with_credentials("example@email.com",
                                                          "password")).to eql(@user)
     end
 
     it 'should return nul if email does not match' do
-      expect(@user = User.authenticate_with_credentials("example123@email.com",
+      expect(user = User.authenticate_with_credentials("example123@email.com",
                                                          "password")).to be_nil
      end
 
      it 'should return nul if password does not match' do
-       expect(@user = User.authenticate_with_credentials("example@email.com",
+       expect(user = User.authenticate_with_credentials("example@email.com",
                                                          "wrongpass")).to be_nil
+     end
+
+     it 'should return user if email contains white space' do
+      expect(user = User.authenticate_with_credentials(" example@email.com ",
+                                                        "password")).to eql(@user)
+     end
+
+     it 'should return user if email is different case' do
+      expect(user = User.authenticate_with_credentials("ExamPle@Email.com",
+                                                        "password")).to eql(@user)
      end
   end
 end
